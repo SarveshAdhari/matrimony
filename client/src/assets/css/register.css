@@ -1,0 +1,135 @@
+.register-wrapper {
+    font: Manrope;
+    background-color: #FFDDEE;
+    height: 100vh;
+    background-image: url('../images/Overlay.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    width: 30%;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border-top: 5px solid #FF8787;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.heading {
+    margin-top: 2%;
+
+}
+
+.heading p {
+    font-weight: 700;
+    font-size: 48px;
+    text-align: center;
+    color: #0E3EDA;
+    padding: 0 10%;
+}
+
+.heading hr {
+    color: #FFBDE6;
+    border-width: 2px;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 10% 0;
+}
+
+.form-field {
+    margin-bottom: 5%;
+    font-size: 24px;
+}
+
+.form-field:focus{
+    outline-color: #FF8787;
+}
+
+.register-btn {
+    margin: 5% 10%;
+    width: 80%;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 700px;
+    background-color: #FF8787;
+    color: #FFFFFF;
+}
+
+.toggle{
+    font-size: 24px;
+    margin-bottom: 5%;
+}
+
+.toggle button{
+    border: none;
+    background: none;
+    color: #E26868;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 740px) {
+    .register-wrapper {
+        padding-top: 30%;
+    }
+
+    .form {
+        width: 60%;
+    }
+
+    .form-field {
+        font-size: 20px;
+    }
+
+    .register-btn {
+        font-size: 24px;
+    }
+
+    .heading p {
+        font-size: 38px;
+    }
+
+    .toggle{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .register-wrapper {
+        background-image: url('../images/android-overlay.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 50%;
+    }
+
+    .form {
+        width: 80%;
+    }
+
+    .form-field {
+        font-size: 18px;
+    }
+
+    .register-btn {
+        font-size: 20px;
+    }
+
+    .heading p {
+        font-size: 28px;
+    }
+
+    .toggle{
+        font-size: 18px;
+    }
+}

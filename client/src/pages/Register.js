@@ -1,17 +1,21 @@
 import { useState } from 'react'
-import { FormField } from '../components'
+import { FormField, Alert } from '../components'
 import '../assets/css/register.css'
+import { useAppContext } from '../context/appContext'
 
 const initialState = {
   name:"",
   email:"",
   password:"",
+  confirmPassword:"",
   isMember: true,
 }
 
 const Register = () => {
 
   const [values, setValues] = useState(initialState)
+
+  const {showAlert, displayAlert, passwordUnmatch} = useAppContext()
 
   const toggleMember = () => {
     setValues({...values, isMember: !values.isMember })
@@ -23,6 +27,13 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const { name, email, password, confirmPassword, isMember } = values
+    if(!isMember && password !== confirmPassword){
+      passwordUnmatch()
+    }
+    if(!email || !password || (!isMember && !name)){
+      displayAlert()
+    }
     console.log(values)
   }
 
@@ -32,11 +43,12 @@ const Register = () => {
         <div className="heading">
           <p>{values.isMember? 'Login' : 'Register'}</p><hr />
         </div>
+        {showAlert && <Alert />}
         <div className="form-fields">
           {!values.isMember && <FormField type="text" value="Username" name='name' handleChange={handleChange} />}
           <FormField type="email" value="Email" name='email' handleChange={handleChange} />
           <FormField type="password" value="Password" name='password' handleChange={handleChange} />
-          {!values.isMember && <FormField type="password" value="Confirm Password" handleChange={handleChange} />}
+          {!values.isMember && <FormField type="password" value="Confirm Password" name='confirmPassword' handleChange={handleChange} />}
         </div>
         <div className="button">
           <button className='register-btn' type='button' onClick={handleSubmit}>

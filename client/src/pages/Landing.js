@@ -14,7 +14,7 @@ const Landing = () => {
           <p>Nobody knows how long it would take for your Prince Charming to find a white horse and come to you. Sign Up today and browse across hundreds of profiles to find someone you might like. It's quick and easy!</p>
           <Link to="/register">Register/Login</Link>
         </div>
-        <img className='main-img' src = {landingLogo} />
+        <img className='main-img' src = {landingLogo} alt='main-logo' />
       </div>
       {/* <div className="desc-art">
         <div className="description">

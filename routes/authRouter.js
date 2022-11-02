@@ -1,11 +1,11 @@
 import express from 'express'
-import { register, login, update, getAllUsers } from '../controllers/authController.js'
+import { register, login, update, getAllUsers, deleteUser } from '../controllers/authController.js'
 
 const router = express.Router()
 
+router.route('/').get(getAllUsers)
 router.route('/register').post(register)
 router.route('/login').post(login)
-router.route('/updateUser').patch(update)
-router.route('/').get(getAllUsers)
+router.route('/:id').delete(deleteUser).patch(update)
 
 export default router

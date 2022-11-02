@@ -55,8 +55,26 @@ a:hover{
     overflow: auto;
 }
 
-@media (max-width:1000px){
+@media screen and (min-width: 767px) and (max-width:1023px){
 
+    nav{
+        margin: 10% 10%;
+        width: auto;
+    }
+    .main-content{
+        margin: 30% 20% 0 10%;
+        width: auto;
+    }
+    .desc{
+        margin-top:0;
+        width: auto;
+    }
+    .main-img{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
     nav{
         margin: 5% 10%;
         width: auto;
@@ -65,10 +83,12 @@ a:hover{
         margin: 30% 10%;
         width: auto;
     }
+
     .desc{
         margin-top:0;
         width: auto;
     }
+
     .main-img{
         display: none;
     }

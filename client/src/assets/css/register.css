@@ -78,13 +78,13 @@
     font-weight: 700;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (min-width: 767px) and (max-width: 1023px) {
     .register-wrapper {
-        padding-top: 30%;
+        padding-top: 40%;
     }
 
     .form {
-        width: 60%;
+        width: 40%;
     }
 
     .form-field {
@@ -104,7 +104,7 @@
     }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 767px) {
     .register-wrapper {
         background-image: url('../images/android-overlay.svg');
         background-position: center;

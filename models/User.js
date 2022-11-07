@@ -1,67 +1,82 @@
 import mongoose from "mongoose"
 import validator from 'validator'
-import moment from 'moment'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const date = new Date()
-const pastDate = date.getDate()+"-"+date.getMonth()+"-"+(date.getFullYear()-18)
+const pastDate = date.getDate() + "-" + date.getMonth() + "-" + (date.getFullYear() - 18)
 
 const UserSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: [true, 'Please enter a name.'],
         minlength: 3,
         maxlength: 40,
         trim: true,
     },
-    email:{
+    email: {
         type: String,
         required: [true, 'Please enter an email.'],
-        validate:{
+        validate: {
             validator: validator.isEmail,
             message: 'Please enter a valid email.',
         },
         unique: true,
     },
-    password:{
+    password: {
         type: String,
         required: [true, 'Please enter a password.'],
         minlength: 6,
+        select:false,
     },
-    location:{
+    location: {
         type: String,
         trim: true,
         maxlength: 50,
         default: 'Not Mentioned.',
     },
-    occupation:{
+    occupation: {
         type: String,
         trim: true,
         maxlength: 50,
         default: 'Not Mentioned.',
     },
-    dob:{
+    dob: {
         type: String,
         maxlength: 50,
         default: pastDate,
     },
-    income:{
+    income: {
         type: String,
         trim: true,
         maxlength: 20,
         default: 'Not Mentioned.',
     },
-    contact:{
+    contact: {
         type: String,
         trim: true,
         maxlength: 50,
         default: 'Not Mentioned.',
     },
-    gender:{
+    gender: {
         type: String,
         trim: true,
         maxlength: 20,
         default: 'Not Mentioned.',
     },
 })
+
+UserSchema.pre('save', async function () {
+    const salt = await bcrypt.genSalt()
+    this.password = await bcrypt.hash(this.password, salt)
+})
+
+UserSchema.methods.createJWT = function () {
+    return jwt.sign(
+        { userId: this._id },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_LIFETIME }
+    )
+}
 
 export default mongoose.model('Users', UserSchema)

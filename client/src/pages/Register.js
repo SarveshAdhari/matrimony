@@ -21,7 +21,8 @@ const Register = () => {
     displayAlert, 
     passwordUnmatch, 
     isLoading, 
-    registerUser
+    registerUser,
+    loginUser,
   } = useAppContext()
 
   const toggleMember = () => {
@@ -46,7 +47,7 @@ const Register = () => {
     
     try {
       if(isMember){
-        console.log('Already A Member!')
+        loginUser(currentUser)
       }
       else{
         registerUser(currentUser)

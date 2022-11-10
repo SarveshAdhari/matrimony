@@ -1,6 +1,11 @@
+import {Navbar} from "../components/index"
+
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <Navbar />
+      Profile
+    </div>
   )
 }
 export default Profile

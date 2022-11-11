@@ -12,6 +12,7 @@ import {
     LOGIN_USER_BEGIN, 
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
+    LOGOUT_USER,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -52,7 +53,7 @@ const AppProvider = ({children}) => {
         localStorage.setItem('token',token)
     }
 
-    const removeUserFromLocalStorage = ({user,token}) =>{
+    const removeUserFromLocalStorage = () =>{
         localStorage.removeItem('user')
         localStorage.removeItem('token')
     }
@@ -84,13 +85,19 @@ const AppProvider = ({children}) => {
         clearAlert()
     }
 
+    const logoutUser = async () =>{
+        dispatch({type: LOGOUT_USER})
+        removeUserFromLocalStorage()
+    }
+
     return <AppContext.Provider 
             value={
                 {...state,
                  displayAlert,
                  passwordUnmatch,
                  registerUser,
-                 loginUser,                   
+                 loginUser,
+                 logoutUser,                   
                 }
             }>
         {children}

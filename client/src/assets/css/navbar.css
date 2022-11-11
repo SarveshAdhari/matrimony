@@ -54,3 +54,26 @@
     background-color: white;
     color: #FFE3E3;
 }
+
+@media screen and (min-width: 767px) and (max-width: 1023px){
+
+}
+
+@media screen and (max-width: 767px){
+    .nav-logo p{
+        font-size: 36px;
+    }
+    .profile{
+        margin-right: 2px;
+    }
+    .profile img{
+        width: 35px;
+        height: 35px;
+    }
+    .logout{
+        flex-grow: 1;
+    }
+    .logout-btn{
+        font-size: 18px;
+    }
+}

@@ -4,7 +4,6 @@ import female from '../assets/images/female_propic.svg'
 
 const ProfilePicture = () => {
     const {user} = useAppContext()
-    console.log(user)
     if(user.gender == 'female'){
         return (
             <img src={female} alt="DP" width={50} height={50} />

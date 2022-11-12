@@ -13,8 +13,8 @@ function App() {
             <SharedLayout />
           </ProtectedRoutes>
         }>
+          <Route index element={<MainPage />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="main" element={<MainPage />} />
         </Route>
         <Route path="/landing" element={<Landing />} />
         <Route path="/register" element={<Register />} />

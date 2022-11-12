@@ -2,3 +2,15 @@
     margin: 0 10%;
     padding: 2%;
 }
+
+@media screen and (min-width: 767px) and (max-width: 1023px){
+    .alert{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .alert{
+        font-size: 14px;
+    }
+}

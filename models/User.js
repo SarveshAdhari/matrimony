@@ -9,23 +9,23 @@ const pastDate = date.getDate() + "-" + date.getMonth() + "-" + (date.getFullYea
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Please enter a name.'],
+        required: [true, 'Please enter a name'],
         minlength: 3,
         maxlength: 40,
         trim: true,
     },
     email: {
         type: String,
-        required: [true, 'Please enter an email.'],
+        required: [true, 'Please enter an email'],
         validate: {
             validator: validator.isEmail,
-            message: 'Please enter a valid email.',
+            message: 'Please enter a valid email',
         },
         unique: true,
     },
     password: {
         type: String,
-        required: [true, 'Please enter a password.'],
+        required: [true, 'Please enter a password'],
         minlength: 6,
         select:false,
     },
@@ -33,13 +33,13 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
         maxlength: 50,
-        default: 'Not Mentioned.',
+        default: 'Not Mentioned',
     },
     occupation: {
         type: String,
         trim: true,
         maxlength: 50,
-        default: 'Not Mentioned.',
+        default: 'Not Mentioned',
     },
     dob: {
         type: String,
@@ -50,19 +50,19 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
         maxlength: 20,
-        default: 'Not Mentioned.',
+        default: 'Not Mentioned',
     },
     contact: {
         type: String,
         trim: true,
         maxlength: 50,
-        default: 'Not Mentioned.',
+        default: 'Not Mentioned',
     },
     gender: {
         type: String,
         trim: true,
         maxlength: 20,
-        default: 'Not Mentioned.',
+        default: 'Not Mentioned',
     },
 })
 

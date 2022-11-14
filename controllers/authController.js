@@ -18,7 +18,13 @@ const register = async (req, res, next) => {
     const token = user.createJWT()
     res.status(StatusCodes.CREATED).json({ user:{
         email: user.email,
-        name: user.name,       
+        name: user.name,
+        location: user.location,
+        occupation: user.occupation,
+        dob: user.dob,
+        income: user.income,
+        contact: user.contact,
+        gender: user.gender,       
     }, token })
 }
 
@@ -52,8 +58,15 @@ const getAllUsers = (req, res) => {
     res.send('Get All Users')
 }
 
-const deleteUser = (req, res) => {
-    res.send('Delete User')
+const deleteUser = async (req, res) => {
+    const {email: email} = req.params
+    const user = await User.findOne({email: email})
+    console.log(user)
+    if(!user){
+        throw new UnAuthenticatedError('Not aunthenticated to access this resource...')
+    }
+    await user.remove()
+    res.status(StatusCodes.OK).json({msg:"user removed"})
 }
 
 export { register, login, update, getAllUsers, deleteUser }

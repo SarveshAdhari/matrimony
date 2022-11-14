@@ -9,6 +9,7 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
     LOGOUT_USER,
+    DELETE_USER,
 } from "./actions"
 
 const reducer = (state, action) => {
@@ -92,9 +93,17 @@ const reducer = (state, action) => {
             alertText: action.payload.msg,
         }
     }
-    if(action.type === 'LOGOUT_USER'){
+    if(action.type === LOGOUT_USER){
         return{
             ...state,
+            user:null,
+            token:null,
+        }
+    }
+    if(action.type === DELETE_USER){
+        return{
+            ...state,
+            showAlert: false,
             user:null,
             token:null,
         }

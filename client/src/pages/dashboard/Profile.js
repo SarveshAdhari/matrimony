@@ -1,13 +1,19 @@
+import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../context/appContext'
 import { FormField } from '../../components'
 import '../../assets/css/profile.css'
 
 const Profile = () => {
 
-  const { user } = useAppContext()
+  const navigate = useNavigate()
+  const { user, deleteUser } = useAppContext()
 
   const handleChange = (e) => {
     console.log(e.target.value)
+  }
+
+  const handleDelete = () =>{
+    deleteUser(user.email)
   }
 
   return (
@@ -99,10 +105,16 @@ const Profile = () => {
       </form>
       <hr />
       <div className='btn-container'>
-      <button className='delete-btn'>
+      <button 
+      className='delete-btn'
+      onClick={handleDelete}
+      >
           Delete Profile
         </button>
-      <button className='cancel-btn'>
+      <button 
+      className='cancel-btn'
+      onClick={()=>navigate('/')}
+      >
           Go Back
         </button>
         <button className='submit-btn'>

@@ -13,6 +13,7 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
     LOGOUT_USER,
+    DELETE_USER,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -90,6 +91,16 @@ const AppProvider = ({children}) => {
         removeUserFromLocalStorage()
     }
 
+    const deleteUser = async(userEmail) =>{
+        dispatch({type:DELETE_USER})
+        try {
+            await axios.delete(`/api/v1/auth/${userEmail}`)
+            logoutUser()
+        } catch (error) {
+            logoutUser()
+        }
+    }
+
     return <AppContext.Provider 
             value={
                 {...state,
@@ -97,7 +108,8 @@ const AppProvider = ({children}) => {
                  passwordUnmatch,
                  registerUser,
                  loginUser,
-                 logoutUser,                   
+                 logoutUser, 
+                 deleteUser,                   
                 }
             }>
         {children}

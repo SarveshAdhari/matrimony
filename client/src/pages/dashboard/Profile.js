@@ -9,11 +9,16 @@ const Profile = () => {
   const { user, deleteUser } = useAppContext()
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    console.log({[e.target.name]: e.target.value})
   }
 
   const handleDelete = () =>{
     deleteUser(user.email)
+  }
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    console.log({...user, [e.target.name]: e.target.value})
   }
 
   return (
@@ -63,11 +68,11 @@ const Profile = () => {
           handleChange={handleChange} />
         </div>
 
-        <div>
+        <div className='date'>
           {/* DOB */}
         <FormField
         label
-          type="text"
+          type="date"
           value={user.dob || "dob"}
           name="dob"
           handleChange={handleChange} />
@@ -87,7 +92,7 @@ const Profile = () => {
           {/* Contact */}
         <FormField
         label
-          type="text"
+          type="number"
           value={user.contact || "contact"}
           name="contact"
           handleChange={handleChange} />
@@ -105,20 +110,26 @@ const Profile = () => {
       </form>
       <hr />
       <div className='btn-container'>
+        {/* Delete Profile Button */}
       <button 
       className='delete-btn'
       onClick={handleDelete}
       >
           Delete Profile
         </button>
+        {/* Back Button */}
       <button 
       className='cancel-btn'
       onClick={()=>navigate('/')}
       >
           Go Back
         </button>
-        <button className='submit-btn'>
-          Update Profile
+        {/* Save changes button */}
+        <button 
+        className='submit-btn' 
+        onClick={handleSubmit}
+        >
+          Save Changes
         </button>
       </div>
       </div>

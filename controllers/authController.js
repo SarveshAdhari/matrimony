@@ -1,6 +1,7 @@
 import User from "../models/User.js"
 import {StatusCodes} from 'http-status-codes'
 import { BadRequestError, UnAuthenticatedError } from '../errors/index.js'
+import { request } from "express"
 
 const register = async (req, res, next) => {
     const {name, email, password} = req.body
@@ -50,8 +51,31 @@ const login = async (req, res) => {
     res.status(StatusCodes.OK).json({user, token})
 }
 
-const update = (req, res) => {
-    res.send('Update User')
+const update = async (req, res) => {
+    console.log(req.params.email)
+    const { email, name, occupation, location, dob, income, contact, gender } = req.body
+    if(!email || !name || !occupation || !location || !dob || !income || !contact || !gender){
+        throw new BadRequestError('Please provide all values')
+    }
+    if(occupation === 'Not Mentioned' || location === 'Not Mentioned' || income === 'Not Mentioned' || contact === 'Not Mentioned' || gender === 'Not Mentioned'){
+        throw new BadRequestError('Please provide all values')
+    }
+
+    const user = await User.findOne(req.params)
+    console.log(user.name)
+    user.email = email
+    user.name = name
+    user.occupation = occupation
+    user.location = location
+    user.dob = dob.toString()
+    user.income = income
+    user.contact = contact
+    user.gender = gender
+
+    await user.save()
+
+    const token = await user.createJWT()
+    res.status(StatusCodes.OK).json({user,token})
 }
 
 const getAllUsers = (req, res) => {

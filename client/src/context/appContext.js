@@ -14,6 +14,9 @@ import {
     LOGIN_USER_ERROR,
     LOGOUT_USER,
     DELETE_USER,
+    UPDATE_USER_BEGIN, 
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_ERROR,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -101,6 +104,10 @@ const AppProvider = ({children}) => {
         }
     }
 
+    const updateUser = async () =>{
+        console.log('Updated User')
+    }
+
     return <AppContext.Provider 
             value={
                 {...state,
@@ -109,7 +116,8 @@ const AppProvider = ({children}) => {
                  registerUser,
                  loginUser,
                  logoutUser, 
-                 deleteUser,                   
+                 deleteUser, 
+                 updateUser,                  
                 }
             }>
         {children}

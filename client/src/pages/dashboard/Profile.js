@@ -1,16 +1,22 @@
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import { useAppContext } from '../../context/appContext'
 import { FormField } from '../../components'
 import '../../assets/css/profile.css'
 
 const Profile = () => {
 
-  const navigate = useNavigate()
-  const { user, deleteUser } = useAppContext()
+  const { user, deleteUser, updateUser } = useAppContext()
+  const [name, setName] = useState(user?.name)
+  const [email, setEmail] = useState(user?.email)
+  const [occupation, setOccupation] = useState(user?.occupation)
+  const [dob, setDob] = useState(user?.dob)
+  const [gender, setGender] = useState(user?.gender)
+  const [contact, setContact] = useState(user?.contact)
+  const [income, setIncome] = useState(user?.income)
+  const [location, setLocation] = useState(user?.location)
 
-  const handleChange = (e) => {
-    console.log({[e.target.name]: e.target.value})
-  }
+  const navigate = useNavigate()
 
   const handleDelete = () =>{
     deleteUser(user.email)
@@ -18,7 +24,8 @@ const Profile = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    console.log({...user, [e.target.name]: e.target.value})
+    console.log({name, email, location, occupation, income, dob, gender, contact})
+    // updateUser()
   }
 
   return (
@@ -35,7 +42,7 @@ const Profile = () => {
           type="text"
           value={user.name || "name"}
           name="name"
-          handleChange={handleChange} />
+          handleChange={(e)=>setName(e.target.value)} />
         </div>
 
         <div>
@@ -45,7 +52,7 @@ const Profile = () => {
           type="text"
           value={user.email || "email"}
           name="email"
-          handleChange={handleChange} />
+          handleChange={(e)=>setEmail(e.target.value)} />
         </div>
 
         <div>
@@ -55,7 +62,7 @@ const Profile = () => {
           type="text"
           value={user.occupation || "occupation"}
           name="occupation"
-          handleChange={handleChange} />
+          handleChange={(e)=>setOccupation(e.target.value)} />
         </div>
 
         <div>
@@ -65,7 +72,7 @@ const Profile = () => {
         type="text"
           value={user.location || "city"}
           name="residing in"
-          handleChange={handleChange} />
+          handleChange={(e)=>setLocation(e.target.value)} />
         </div>
 
         <div className='date'>
@@ -75,7 +82,7 @@ const Profile = () => {
           type="date"
           value={user.dob || "dob"}
           name="dob"
-          handleChange={handleChange} />
+          handleChange={(e)=>setDob(e.target.value)} />
         </div>
 
         <div>
@@ -85,7 +92,7 @@ const Profile = () => {
           type="text"
           value={user.income || "income"}
           name="income"
-          handleChange={handleChange} />
+          handleChange={(e)=>setIncome(e.target.value)} />
         </div>
 
         <div>
@@ -95,7 +102,7 @@ const Profile = () => {
           type="number"
           value={user.contact || "contact"}
           name="contact"
-          handleChange={handleChange} />
+          handleChange={(e)=>setContact(e.target.value)} />
         </div>
 
         <div>
@@ -105,7 +112,7 @@ const Profile = () => {
           type="text"
           value={user.gender || "gender"}
           name="gender"
-          handleChange={handleChange} />
+          handleChange={(e)=>setGender(e.target.value)} />
         </div>
       </form>
       <hr />

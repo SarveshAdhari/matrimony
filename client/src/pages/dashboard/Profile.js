@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAppContext } from '../../context/appContext'
-import { FormField } from '../../components'
+import { Alert, FormField } from '../../components'
 import '../../assets/css/profile.css'
 
 const Profile = () => {
 
-  const { user, deleteUser, updateUser } = useAppContext()
+  const { user, deleteUser, updateUser, showAlert, alertText } = useAppContext()
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
   const [occupation, setOccupation] = useState(user?.occupation)
@@ -24,8 +24,10 @@ const Profile = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    console.log({name, email, location, occupation, income, dob, gender, contact})
-    // updateUser()
+     
+    const currentUser = {name, email, location, occupation, income, dob, gender, contact}
+    console.log(currentUser)
+    updateUser(currentUser)
   }
 
   return (
@@ -33,6 +35,7 @@ const Profile = () => {
       <div className="profile-heading">
         <p>My Profile</p>
       </div>
+      {showAlert && alert(alertText)}
       <div className="profile-form">
         <form>
         <div>

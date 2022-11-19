@@ -115,6 +115,7 @@ const reducer = (state, action) => {
         return{
             ...state,
             isLoading: true,
+            showAlert: false,
         }
     }
     if(action.type === UPDATE_USER_SUCCESS){
@@ -123,12 +124,18 @@ const reducer = (state, action) => {
             user: action.payload.user,
             token: action.payload.token,
             isLoading: false,
+            alertType: 'success',
+            alertText: 'Successfully Updated Your Profile',
+            showAlert: true,
         }
     }
     if(action.type === UPDATE_USER_ERROR){
         return{
             ...state,
-            
+            isLoading: false,
+            alertType: 'danger',
+            alertText: action.payload.msg,
+            showAlert: true, 
         }
     }
 

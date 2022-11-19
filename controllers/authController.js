@@ -52,7 +52,7 @@ const login = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    console.log(req.user)
+    // console.log('user id is',req.user.userId)
     const { email, name, occupation, location, dob, income, contact, gender } = req.body
     if(!email || !name || !occupation || !location || !dob || !income || !contact || !gender){
         throw new BadRequestError('Please provide all values')
@@ -61,7 +61,8 @@ const update = async (req, res) => {
         throw new BadRequestError('Please provide all values')
     }
 
-    const user = await User.findOne(req.params)
+    const user = await User.findOne({_id: req.user.userId})
+    // console.log('user is',user)
     user.email = email
     user.name = name
     user.occupation = occupation

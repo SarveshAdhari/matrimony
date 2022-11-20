@@ -16,6 +16,9 @@ const Profile = () => {
   const [income, setIncome] = useState(user?.income)
   const [location, setLocation] = useState(user?.location)
 
+  const date = new Date()
+  const pastDate = (date.getFullYear() - 18) + "-" + date.getMonth() + "-" + date.getDate()
+
   const navigate = useNavigate()
 
   const handleDelete = () =>{
@@ -24,7 +27,6 @@ const Profile = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-     
     const currentUser = {name, email, location, occupation, income, dob, gender, contact}
     console.log(currentUser)
     updateUser(currentUser)
@@ -83,8 +85,9 @@ const Profile = () => {
         <FormField
         label
           type="date"
-          value={user.dob || "dob"}
+          value={user.dob}
           name="dob"
+          max = {pastDate}
           handleChange={(e)=>setDob(e.target.value)} />
         </div>
 
@@ -102,7 +105,7 @@ const Profile = () => {
           {/* Contact */}
         <FormField
         label
-          type="number"
+          type="text"
           value={user.contact || "contact"}
           name="contact"
           handleChange={(e)=>setContact(e.target.value)} />

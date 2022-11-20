@@ -1,5 +1,6 @@
-const FormField = ({label, type, value, name, handleChange}) => {
+const FormField = ({label, type, value, name, handleChange, max}) => {
   if(type === 'date'){
+    console.log(value)
     return (
       <>
       {label && <label className="form-label" htmlFor={name}>{name}:</label>}
@@ -8,7 +9,8 @@ const FormField = ({label, type, value, name, handleChange}) => {
       className='form-field' 
       name={name}
       type={type}  
-      placeholder={value || name} 
+      value={value}
+      max={max} 
       onChange={handleChange} />
       </>
     )
@@ -22,7 +24,7 @@ const FormField = ({label, type, value, name, handleChange}) => {
     className='form-field' 
     name={name}
     type={type}  
-    placeholder={value || name} 
+    placeholder={value} 
     onChange={handleChange} />
     </>
   )

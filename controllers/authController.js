@@ -78,8 +78,13 @@ const update = async (req, res) => {
     res.status(StatusCodes.OK).json({user,token})
 }
 
-const getAllUsers = (req, res) => {
-    res.send('Get All Users')
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find()
+    res.status(StatusCodes.OK).json({users})
+    } catch (error) {
+        throw new UnAuthenticatedError('Not aunthenticated to access this resource...')
+    }
 }
 
 const deleteUser = async (req, res) => {

@@ -17,6 +17,8 @@ import {
     UPDATE_USER_BEGIN, 
     UPDATE_USER_SUCCESS,
     UPDATE_USER_ERROR,
+    GET_USERS_BEGIN,
+    GET_USERS_SUCCESS,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -29,6 +31,7 @@ const initialState = {
     alertType: '',
     user:user? JSON.parse(user) : null,
     token:token,
+    users:null,
 }
 
 const AppContext = React.createContext()
@@ -140,6 +143,17 @@ const AppProvider = ({children}) => {
         }
         clearAlert()
     }
+    const getUsers = async () =>{
+        dispatch({type: GET_USERS_BEGIN})
+        try {
+            const {data} = await authFetch.get('/')
+            const users = data.users
+            // console.log(users)
+            dispatch({type: GET_USERS_SUCCESS, payload:{users}})
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return <AppContext.Provider 
             value={
@@ -150,7 +164,8 @@ const AppProvider = ({children}) => {
                  loginUser,
                  logoutUser, 
                  deleteUser, 
-                 updateUser,                  
+                 updateUser,
+                 getUsers,                  
                 }
             }>
         {children}

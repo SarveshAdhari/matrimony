@@ -13,6 +13,8 @@ import {
     UPDATE_USER_BEGIN, 
     UPDATE_USER_SUCCESS,
     UPDATE_USER_ERROR,
+    GET_USERS_BEGIN,
+    GET_USERS_SUCCESS,
 } from "./actions"
 
 const reducer = (state, action) => {
@@ -136,6 +138,20 @@ const reducer = (state, action) => {
             alertType: 'danger',
             alertText: action.payload.msg,
             showAlert: true, 
+        }
+    }
+    if(action.type === GET_USERS_BEGIN){
+        return{
+            ...state,
+            isLoading: true,
+            showAlert: false,
+        }
+    }
+    if(action.type === GET_USERS_SUCCESS){
+        return{
+            ...state,
+            isLoading: false,
+            users: action.payload.users,
         }
     }
 

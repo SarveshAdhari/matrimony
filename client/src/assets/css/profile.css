@@ -62,8 +62,9 @@
     float: left;
 }
 .date{
-    margin: 0 11.7% 0 0;
+    /* margin: 0 15.3% 0 0; */
     padding: 0;
+    width: 270px;
 }
 hr{
 color: #E26868;
@@ -130,6 +131,10 @@ border: 1px solid #E26868;
     .btn-container{
         box-sizing: border-box;
     }
+    .date{
+        width: 269px;
+        box-sizing: border-box;
+    }
 }
 
 @media screen and (min-width:767px) and (max-width: 1023px){
@@ -139,6 +144,9 @@ border: 1px solid #E26868;
     .profile-form{
         margin-top: 18px;
     }
+    .profile-form form{
+        flex-direction: column;
+    }
     .profile-form input{
         font-size: 20px;
         margin-bottom: 10px;
@@ -147,7 +155,8 @@ border: 1px solid #E26868;
         font-size: 18px;
     }
     .date{
-        margin: 0 14% 0 0;
+        /* margin: 0 14% 0 0; */
+        width: 100%;
     }
     .btn-container{
         justify-content: space-evenly;
@@ -180,6 +189,9 @@ border: 1px solid #E26868;
         margin-top: 10px;
         width: 80%;
     }
+    .profile-form form{
+        flex-direction: column;
+    }
     .profile-form input{
         font-size: 16px;
     }
@@ -187,7 +199,8 @@ border: 1px solid #E26868;
         font-size: 16px;
     }
     .date{
-        margin: 0 16% 0 0;
+        /* margin: 0 16% 0 0; */
+        width: 100%;
     }
     .btn-container{
         align-self: center;

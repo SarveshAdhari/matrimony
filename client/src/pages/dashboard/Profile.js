@@ -7,6 +7,7 @@ import '../../assets/css/profile.css'
 const Profile = () => {
 
   const { user, deleteUser, updateUser, showAlert, alertText } = useAppContext()
+  // const [dp, setDp] = useState()
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
   const [occupation, setOccupation] = useState(user?.occupation)
@@ -27,6 +28,7 @@ const Profile = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
+    // console.log(dp)
     const currentUser = {name, email, location, occupation, income, dob, gender, contact}
     console.log(currentUser)
     updateUser(currentUser)
@@ -37,9 +39,9 @@ const Profile = () => {
       <div className="profile-heading">
         <p>My Profile</p>
       </div>
-      {showAlert && alert(alertText)}
+      <div className='alert-div'>{showAlert && <Alert />}</div>
       <div className="profile-form">
-        <form>
+        <form encType="multipart/form-data">
         <div>
           {/* Name */}
         <FormField
@@ -120,6 +122,14 @@ const Profile = () => {
           name="gender"
           handleChange={(e)=>setGender(e.target.value)} />
         </div>
+        {/* <div className='dp'> */}
+          {/* Display Picture */}
+        {/* <FormField
+        label
+          type="file"
+          name="dp"
+          handleChange={(e)=>setDp(e.target.value)} />
+        </div>*/}
       </form>
       <hr />
       <div className='btn-container'>

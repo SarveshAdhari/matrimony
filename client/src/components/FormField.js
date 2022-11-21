@@ -16,6 +16,20 @@ const FormField = ({label, type, value, name, handleChange, max}) => {
     )
   }
 
+  // if(type === 'file'){
+  //   return (
+  //     <>
+  //     {label && <label className="form-label" htmlFor={name}>{name}:</label>}
+  //     <br/>
+  //     <input 
+  //     className='form-field' 
+  //     name={name}
+  //     type={type}
+  //     onChange={handleChange} />
+  //     </>
+  //   )
+  // }
+
   return (
     <>
     {label && <label className="form-label" htmlFor={name}>{name}:</label>}

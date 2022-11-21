@@ -7,6 +7,9 @@ const date = new Date()
 const pastDate = date.getDate() + "-" + date.getMonth() + "-" + (date.getFullYear() - 18)
 
 const UserSchema = new mongoose.Schema({
+    // dp: {
+    //     image: { data: Buffer, contentType: String }
+    // },
     name: {
         type: String,
         required: [true, 'Please enter a name'],

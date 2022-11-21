@@ -10,6 +10,7 @@ import errorHandlerMiddleware from './middleware/errorHandler.js'
 const app = express()
 dotenv.config()
 
+
 if(process.env.NODE_ENV !== 'production'){
     app.use(morgan('dev'))
 }

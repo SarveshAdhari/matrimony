@@ -56,9 +56,9 @@ const AppProvider = ({children}) => {
         return response
     },
     (error)=>{
-        console.log(error)
+        // console.log(error)
         if(error.response.status === 401){
-            console.log('AUTH-ERROR')
+            logoutUser()
         }
         return Promise.reject(error)
     })

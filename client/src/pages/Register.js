@@ -38,6 +38,7 @@ const Register = () => {
     const { name, email, password, confirmPassword, isMember } = values
     if(!isMember && password !== confirmPassword){
       passwordUnmatch()
+      return
     }
     if(!email || !password || (!isMember && !name)){
       displayAlert()

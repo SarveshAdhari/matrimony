@@ -76,6 +76,7 @@ const AppProvider = ({children}) => {
 
     const passwordUnmatch = () =>{
         dispatch({type: PASSWORD_UNMATCH})
+        console.log('password did not match')
         clearAlert()
     }
 

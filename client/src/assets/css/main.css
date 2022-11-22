@@ -8,6 +8,39 @@
 }
 
 .users-container{
+    margin-top: 20px;
     background-color:aqua;
-    width: 80%;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.user-frame{
+    margin: 5px;
+    width: 272px;
+    border-radius: 5px;
+    background-color: #FFE3E3;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.25);
+}
+.user-img{
+    text-align: center;
+    height: 170px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #E26868;
+    margin-bottom: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+.user-details{
+    padding: 10px;
+}
+.user-frame p{
+    margin-bottom: 5px;
+    color: #251F44;
+    font-weight: 700;
+    font-size: 18px;
 }

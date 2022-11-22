@@ -1,6 +1,6 @@
 const FormField = ({label, type, value, name, handleChange, max}) => {
   if(type === 'date'){
-    console.log(value)
+    // console.log(value)
     return (
       <>
       {label && <label className="form-label" htmlFor={name}>{name}:</label>}

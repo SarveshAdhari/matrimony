@@ -30,7 +30,7 @@ const Profile = () => {
     e.preventDefault()
     // console.log(dp)
     const currentUser = {name, email, location, occupation, income, dob, gender, contact}
-    console.log(currentUser)
+    // console.log(currentUser)
     updateUser(currentUser)
   }
 

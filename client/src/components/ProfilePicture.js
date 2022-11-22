@@ -5,7 +5,7 @@ import female from '../assets/images/female_propic.svg'
 
 const ProfilePicture = () => {
     const { user } = useAppContext()
-    if (user.gender === 'female') {
+    if (user.gender === 'Female') {
         return (
             <Link to="/profile">
                 <img src={female} alt="DP" width={50} height={50} />

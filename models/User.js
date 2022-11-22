@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 const date = new Date()
-const pastDate = date.getDate() + "-" + date.getMonth() + "-" + (date.getFullYear() - 18)
+const pastDate = (date.getFullYear() - 18) + "-" + date.getMonth() + "-" + date.getDate()
 
 const UserSchema = new mongoose.Schema({
     // dp: {

@@ -26,18 +26,18 @@ const MainPage = () => {
         {!users && <p>Loading...</p>}
         {users && users.map((currUser) => {
           // Do not return current user
-          // if(user.email === currUser.email) return
+          if(user.email === currUser.email) return
           return (
             <div className='user-frame' key={currUser._id}>
               <div className='user-img'><p>*Image will come here*</p></div>
               <div className='user-details'>
-              <div><p>Name: {currUser.name}</p></div>
-              <div><p>Age: {calculate_age(currUser.dob)}</p></div>
-              <div><p>Gender: {currUser.gender}</p></div>
-              <div><p>Residing In: {currUser.location}</p></div>
-              <div><p>Occupation: {currUser.occupation}</p></div>
-              <div><p>Income: {currUser.income}</p></div>
-              <div><p>Contact: {currUser.contact}</p></div>
+            <p>Name: <span><i>{currUser.name}</i></span></p>
+            <p>Age: <span><i>{calculate_age(currUser.dob)}</i></span></p>
+            <p>Gender: <span><i>{currUser.gender}</i></span></p>
+            <p>Residing In: <span><i>{currUser.location}</i></span></p>
+            <p>Occupation: <span><i>{currUser.occupation}</i></span></p>
+            <p>Income: <span><i>{currUser.income}</i></span></p>
+            <p>Contact: <span><i>{currUser.contact}</i></span></p>
               </div>
             </div>
           )

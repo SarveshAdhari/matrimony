@@ -143,7 +143,7 @@ const Profile = () => {
         {/* Back Button */}
       <button 
       className='cancel-btn'
-      onClick={()=>navigate('/')}
+      onClick={()=>navigate('/main')}
       >
           Go Back
         </button>

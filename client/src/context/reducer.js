@@ -62,6 +62,7 @@ const reducer = (state, action) => {
         }
     }
     if(action.type === REGISTER_USER_ERROR){
+        console.log(action.payload)
         return{
             ...state,
             isLoading: false,

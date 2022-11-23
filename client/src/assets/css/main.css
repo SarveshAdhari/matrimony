@@ -9,15 +9,15 @@
 
 .users-container{
     margin-top: 20px;
-    background-color:aqua;
-    width: 70%;
+    /* background-color:aqua; */
+    width: 876px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
-.user-frame{
-    margin: 5px;
+.user-frame{  
+    margin: 10px;
     width: 272px;
     border-radius: 5px;
     background-color: #FFE3E3;
@@ -31,7 +31,7 @@
     height: 170px;
     width: 100%;
     box-sizing: border-box;
-    background-color: #E26868;
+    background-color: #93B5C6;
     margin-bottom: 5px;
     border-radius: 5px 5px 0px 0px;
 }
@@ -40,7 +40,32 @@
 }
 .user-frame p{
     margin-bottom: 5px;
+    opacity: 100%;
     color: #251F44;
     font-weight: 700;
     font-size: 18px;
+}
+
+.user-frame span{
+    opacity: 50%;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px){
+    .users-container{
+        width: 590px;
+    }
+    .user-frame{
+        width: 274px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .users-container{
+        width: 515px;
+        justify-content: center;
+    }
+    .user-frame{
+        width: 70%;
+    }
 }

@@ -61,7 +61,7 @@ const Register = () => {
   useEffect(()=>{
     if(user){
       setTimeout(()=>{
-        navigate('/main')
+        navigate('/')
       },2000)
     }
   },[user, navigate])

@@ -71,6 +71,14 @@
     padding: 0;
     width: 270px;
 }
+.gender{
+    padding: 0;
+    width: 270px;
+}
+.gender select{
+    width: 100%;
+}
+
 hr{
 color: #E26868;
 border: 1px solid #E26868;
@@ -163,6 +171,9 @@ border: 1px solid #E26868;
         /* margin: 0 14% 0 0; */
         width: 100%;
     }
+    .gender{
+        width: 100%;
+    }
     .btn-container{
         justify-content: space-evenly;
         margin-bottom: 10px;
@@ -208,6 +219,9 @@ border: 1px solid #E26868;
     }
     .date{
         /* margin: 0 16% 0 0; */
+        width: 100%;
+    }
+    .gender{
         width: 100%;
     }
     .btn-container{

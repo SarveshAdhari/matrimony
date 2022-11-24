@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAppContext } from '../../context/appContext'
-import { Alert, FormField } from '../../components'
+import { Alert, FormField, FormSelect } from '../../components'
 import '../../assets/css/profile.css'
 
 const Profile = () => {
 
-  const { user, deleteUser, updateUser, showAlert, alertText } = useAppContext()
+  const { user, deleteUser, updateUser, showAlert, genderOptions } = useAppContext()
   // const [dp, setDp] = useState()
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
@@ -87,7 +87,7 @@ const Profile = () => {
         <FormField
         label
           type="date"
-          value={user.dob}
+          value={dob}
           name="dob"
           max = {pastDate}
           handleChange={(e)=>setDob(e.target.value)} />
@@ -97,7 +97,7 @@ const Profile = () => {
           {/* Income */}
         <FormField
         label
-          type="text"
+          type="number"
           value={user.income || "income"}
           name="income"
           handleChange={(e)=>setIncome(e.target.value)} />
@@ -107,19 +107,19 @@ const Profile = () => {
           {/* Contact */}
         <FormField
         label
-          type="text"
+          type="number"
           value={user.contact || "contact"}
           name="contact"
           handleChange={(e)=>setContact(e.target.value)} />
         </div>
 
-        <div>
+        <div className='gender'>
           {/* Gender */}
-        <FormField
+        <FormSelect
         label
-          type="text"
-          value={user.gender || "gender"}
+          value={gender}
           name="gender"
+          options={genderOptions}
           handleChange={(e)=>setGender(e.target.value)} />
         </div>
         {/* <div className='dp'> */}
@@ -143,7 +143,7 @@ const Profile = () => {
         {/* Back Button */}
       <button 
       className='cancel-btn'
-      onClick={()=>navigate('/main')}
+      onClick={()=>navigate('/')}
       >
           Go Back
         </button>

@@ -32,6 +32,7 @@ const initialState = {
     user:user? JSON.parse(user) : null,
     token:token,
     users:null,
+    genderOptions: ['Male','Female'],
 }
 
 const AppContext = React.createContext()

@@ -36,7 +36,7 @@ const MainPage = () => {
             <p>Gender: <span><i>{currUser.gender}</i></span></p>
             <p>Residing In: <span><i>{currUser.location}</i></span></p>
             <p>Occupation: <span><i>{currUser.occupation}</i></span></p>
-            <p>Income: <span><i>{currUser.income}</i></span></p>
+            <p>Income: <span><i>Rs. {currUser.income}</i></span></p>
             <p>Contact: <span><i>{currUser.contact}</i></span></p>
               </div>
             </div>

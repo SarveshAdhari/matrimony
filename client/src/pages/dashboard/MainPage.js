@@ -1,9 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { FormSelect, FormField } from '../../components'
 import { useAppContext } from '../../context/appContext'
 import '../../assets/css/main.css'
 
 const MainPage = () => {
-  const { getUsers, users, user } = useAppContext()
+  const { getUsers, users, user, genderOptions } = useAppContext()
+  const [gender, setGender] = useState('male')
+  const [age, setAge] = useState(21)
+  const [loc, setLoc] = useState(user.location)
 
   const calculate_age = (dob1) => {
     var today = new Date()
@@ -22,6 +26,26 @@ const MainPage = () => {
   // {users && console.log(users)}
   return (
     <div className='main-container'>
+      <div className="filters">
+          I'm looking for
+          <FormSelect
+          value={gender}
+          name="gender"
+          options={genderOptions}
+          handleChange={(e)=>setGender(e.target.value)} />
+          aged
+          <FormSelect
+          value={age}
+          name="age"
+          options={[21,22,23,24,25,26]}
+          handleChange={(e)=>setAge(e.target.value)} />
+          residing in 
+          <FormField
+          type="text"
+          value={user.location}
+          name="location"
+          handleChange={(e)=>setLoc(e.target.value)} />
+      </div>
       <div className="users-container">
         {!users && <p>Loading...</p>}
         {users && users.map((currUser) => {

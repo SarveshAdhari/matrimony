@@ -93,7 +93,7 @@ const Profile = () => {
           handleChange={(e)=>setDob(e.target.value)} />
         </div>
 
-        <div>
+        <div className='income'>
           {/* Income */}
         <FormField
         label
@@ -103,7 +103,7 @@ const Profile = () => {
           handleChange={(e)=>setIncome(e.target.value)} />
         </div>
 
-        <div>
+        <div className='contact'>
           {/* Contact */}
         <FormField
         label

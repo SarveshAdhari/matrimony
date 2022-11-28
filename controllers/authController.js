@@ -80,8 +80,22 @@ const update = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find()
-    res.status(StatusCodes.OK).json({users})
+        const {gender, age, location} = req.query
+        const queryObject = {}
+
+        if(gender != "all"){
+            queryObject.gender = gender
+        }
+        if(age != "all"){
+            queryObject.age = age
+        }
+        if(location != "anywhere"){
+            queryObject.location = {$regex: location, $options: 'i'}
+        }
+        let result = User.find(queryObject)
+
+        const users = await result
+    res.status(StatusCodes.OK).json({users, totalUsers: users.length, pages: 1})
     } catch (error) {
         throw new UnAuthenticatedError('Not aunthenticated to access this resource...')
     }

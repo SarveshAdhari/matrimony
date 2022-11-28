@@ -78,7 +78,12 @@
 .gender select{
     width: 100%;
 }
-
+.income input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button ,
+.contact input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 hr{
 color: #E26868;
 border: 1px solid #E26868;

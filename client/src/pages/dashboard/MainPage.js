@@ -5,9 +5,9 @@ import '../../assets/css/main.css'
 
 const MainPage = () => {
   const { getUsers, users, user, genderOptions } = useAppContext()
-  const [gender, setGender] = useState('male')
-  const [age, setAge] = useState(21)
-  const [loc, setLoc] = useState(user.location)
+  const [gender, setGender] = useState()
+  const [age, setAge] = useState()
+  const [loc, setLoc] = useState()
 
   const calculate_age = (dob1) => {
     var today = new Date()
@@ -29,20 +29,20 @@ const MainPage = () => {
       <div className="filters">
           I'm looking for
           <FormSelect
-          value={gender}
+          value={gender || "all"}
           name="gender"
-          options={genderOptions}
+          options={["all",...genderOptions]}
           handleChange={(e)=>setGender(e.target.value)} />
           aged
           <FormSelect
-          value={age}
+          value={age ||"all"}
           name="age"
-          options={[21,22,23,24,25,26]}
+          options={["all",21,22,23,24,25,26]}
           handleChange={(e)=>setAge(e.target.value)} />
           residing in 
           <FormField
           type="text"
-          value={user.location}
+          value={loc || "anywhere"}
           name="location"
           handleChange={(e)=>setLoc(e.target.value)} />
       </div>

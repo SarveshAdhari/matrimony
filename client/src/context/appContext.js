@@ -148,7 +148,7 @@ const AppProvider = ({children}) => {
     const getUsers = async () =>{
         dispatch({type: GET_USERS_BEGIN})
         try {
-            const {data} = await authFetch.get('/')
+            const {data} = await authFetch.get('?gender=all&age=all&location=anywhere')
             const users = data.users
             // console.log(users)
             dispatch({type: GET_USERS_SUCCESS, payload:{users}})

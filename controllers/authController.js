@@ -83,13 +83,13 @@ const getAllUsers = async (req, res) => {
         const {gender, age, location} = req.query
         const queryObject = {}
 
-        if(gender != "all"){
+        if(gender && gender != "all"){
             queryObject.gender = gender
         }
-        if(age != "all"){
+        if(age && age != "all"){
             queryObject.age = age
         }
-        if(location != "anywhere"){
+        if(location && location != "anywhere"){
             queryObject.location = {$regex: location, $options: 'i'}
         }
         let result = User.find(queryObject)

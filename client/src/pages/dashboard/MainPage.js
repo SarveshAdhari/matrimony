@@ -4,7 +4,17 @@ import { useAppContext } from '../../context/appContext'
 import '../../assets/css/main.css'
 
 const MainPage = () => {
-  const { getUsers, users, user, genderOptions } = useAppContext()
+  const { 
+    getUsers, 
+    users, 
+    user, 
+    genderOptions, 
+    ageOptions , 
+    handleChange, 
+    searchGender,
+    searchAge,
+    searchLocation,
+  } = useAppContext()
   const [gender, setGender] = useState()
   const [age, setAge] = useState()
   const [loc, setLoc] = useState()
@@ -20,37 +30,47 @@ const MainPage = () => {
     return age_now
   }
 
+  const handleFilter = (e) =>{
+    e.preventDefault()
+    let name = e.target.name
+    let value = e.target.value
+    handleChange({name, value})
+  }
+
   useEffect(() => {
     getUsers()
-  }, [])
+  },[searchGender,searchAge,searchLocation])
   // {users && console.log(users)}
   return (
     <div className='main-container'>
-      <div className="filters">
+      <form className="filters" onChange={handleFilter}>
           I'm looking for
           <FormSelect
           value={gender || "all"}
-          name="gender"
+          name="searchGender"
           options={["all",...genderOptions]}
           handleChange={(e)=>setGender(e.target.value)} />
           aged
           <FormSelect
           value={age ||"all"}
-          name="age"
-          options={["all",21,22,23,24,25,26]}
+          name="searchAge"
+          options={["all",...ageOptions]}
           handleChange={(e)=>setAge(e.target.value)} />
           residing in 
           <FormField
           type="text"
           value={loc || "anywhere"}
-          name="location"
+          name="searchLocation"
           handleChange={(e)=>setLoc(e.target.value)} />
-      </div>
+      </form>
       <div className="users-container">
         {!users && <p>Loading...</p>}
         {users && users.map((currUser) => {
           // Do not return current user
           if(user.email === currUser.email) return
+          if(searchAge !== 'all'){
+            if(searchAge != calculate_age(currUser.dob)) return
+          }
           return (
             <div className='user-frame' key={currUser._id}>
               <div className='user-img'><p>*Image will come here*</p></div>

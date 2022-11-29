@@ -15,6 +15,7 @@ import {
     UPDATE_USER_ERROR,
     GET_USERS_BEGIN,
     GET_USERS_SUCCESS,
+    HANDLE_CHANGE,
 } from "./actions"
 
 const reducer = (state, action) => {
@@ -153,6 +154,12 @@ const reducer = (state, action) => {
             ...state,
             isLoading: false,
             users: action.payload.users,
+        }
+    }
+    if(action.type === HANDLE_CHANGE){
+        return{
+            ...state,
+            [action.payload.name]:action.payload.value, 
         }
     }
 

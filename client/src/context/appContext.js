@@ -19,6 +19,7 @@ import {
     UPDATE_USER_ERROR,
     GET_USERS_BEGIN,
     GET_USERS_SUCCESS,
+    HANDLE_CHANGE,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -33,6 +34,10 @@ const initialState = {
     token:token,
     users:null,
     genderOptions: ['Male','Female'],
+    ageOptions: [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
+    searchGender: 'all',
+    searchAge: 'all',
+    searchLocation: 'anywhere',
 }
 
 const AppContext = React.createContext()
@@ -146,15 +151,20 @@ const AppProvider = ({children}) => {
         clearAlert()
     }
     const getUsers = async () =>{
+        const {searchGender, searchAge, searchLocation} = state
         dispatch({type: GET_USERS_BEGIN})
         try {
-            const {data} = await authFetch.get('?gender=all&age=all&location=anywhere')
+            console.log(searchGender)
+            const {data} = await authFetch.get(`?gender=${searchGender}&age=${searchAge}&location=${searchLocation}`)
             const users = data.users
             // console.log(users)
             dispatch({type: GET_USERS_SUCCESS, payload:{users}})
         } catch (error) {
             console.log(error)
         }
+    }
+    const handleChange = ({name, value}) =>{
+        dispatch({type: HANDLE_CHANGE, payload:{name, value}})
     }
 
     return <AppContext.Provider 
@@ -167,7 +177,8 @@ const AppProvider = ({children}) => {
                  logoutUser, 
                  deleteUser, 
                  updateUser,
-                 getUsers,                  
+                 getUsers,
+                 handleChange,                  
                 }
             }>
         {children}

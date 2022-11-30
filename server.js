@@ -6,6 +6,9 @@ import connectDB from './db/connect.js'
 import authRouter from './routes/authRouter.js'
 import notFoundMiddleware from './middleware/notFound.js'
 import errorHandlerMiddleware from './middleware/errorHandler.js'
+import {fileURLToPath} from 'url'
+import {dirname} from 'path'
+import path from 'path'
 
 const app = express()
 dotenv.config()
@@ -14,6 +17,11 @@ dotenv.config()
 if(process.env.NODE_ENV !== 'production'){
     app.use(morgan('dev'))
 }
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+app.use(express.static(path.resolve(__dirname,'./client')))
+
 app.use(express.json())
 
 app.get('/',(req, res)=>{

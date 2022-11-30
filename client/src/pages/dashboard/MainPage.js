@@ -27,6 +27,7 @@ const MainPage = () => {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age_now--
     }
+    console.log(age_now)
     return age_now
   }
 
@@ -67,13 +68,13 @@ const MainPage = () => {
         {!users && <p>Loading...</p>}
         {users && users.map((currUser) => {
           // Do not return current user
-          if(user.email === currUser.email) return
+          if(user.email === currUser.email || currUser.name === 'admin') return
           if(searchAge !== 'all'){
-            if(searchAge != calculate_age(currUser.dob)) return
+            if(searchAge !== calculate_age(currUser.dob)) return
           }
           return (
             <div className='user-frame' key={currUser._id}>
-              <div className='user-img'><p>*Image will come here*</p></div>
+              <div className='user-img'><img src={currUser.dp} alt={currUser.dp} /></div>
               <div className='user-details'>
             <p>Name: <span><i>{currUser.name}</i></span></p>
             <p>Age: <span><i>{calculate_age(currUser.dob)}</i></span></p>

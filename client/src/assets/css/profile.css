@@ -84,6 +84,12 @@ input::-webkit-inner-spin-button ,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+.dp{
+    width: 100%;
+}
+.dp input,.dp label{
+    padding: 0 25%;
+}
 hr{
 color: #E26868;
 border: 1px solid #E26868;
@@ -195,6 +201,9 @@ border: 1px solid #E26868;
         font-size: 16px;
         padding: 2px 10px;
     }
+    .dp input,.dp label{
+        padding: 0;
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -247,5 +256,8 @@ border: 1px solid #E26868;
     .delete-btn{
         font-size: 14px;
         padding: 2px 10px;
+    }
+    .dp input,.dp label{
+        padding: 0;
     }
 }

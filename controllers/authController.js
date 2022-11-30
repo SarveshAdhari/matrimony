@@ -71,6 +71,7 @@ const update = async (req, res) => {
     user.income = income
     user.contact = contact
     user.gender = gender
+    // user.dp = dp
 
     await user.save()
 

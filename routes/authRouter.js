@@ -1,18 +1,19 @@
 import express from 'express'
 import { register, login, update, getAllUsers, deleteUser } from '../controllers/authController.js'
 import authenticateUser from '../middleware/auth.js'
+// import { upload } from '../middleware/fileUpload.js'
 
-import multer from 'multer'
+// import multer from 'multer'
 //Image Related
-const multerStorage = multer.diskStorage({
-    destination:(req, file ,cb)=>{
-        cb(null, 'uploads')
-    },
-    filename:(req, file, cb)=>{
-        cb(null, file.originalname)
-    }
-})
-const upload = multer({storage: multerStorage})
+// const multerStorage = multer.diskStorage({
+//     destination:(req, file ,cb)=>{
+//         cb(null, 'uploads')
+//     },
+//     filename:(req, file, cb)=>{
+//         cb(null, file.originalname)
+//     }
+// })
+// const upload = multer({storage: multerStorage})
 
 const router = express.Router()
 

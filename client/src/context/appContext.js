@@ -38,6 +38,7 @@ const initialState = {
     searchGender: 'all',
     searchAge: 'all',
     searchLocation: 'anywhere',
+    pages: 1,
 }
 
 const AppContext = React.createContext()

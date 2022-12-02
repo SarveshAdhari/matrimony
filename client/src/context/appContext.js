@@ -20,6 +20,7 @@ import {
     GET_USERS_BEGIN,
     GET_USERS_SUCCESS,
     HANDLE_CHANGE,
+    CHANGE_PAGE,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -34,11 +35,13 @@ const initialState = {
     token:token,
     users:null,
     genderOptions: ['Male','Female'],
-    ageOptions: [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
+    ageOptions: [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],
     searchGender: 'all',
     searchAge: 'all',
     searchLocation: 'anywhere',
     pages: 1,
+    totalUsers: null,
+    page: 1,
 }
 
 const AppContext = React.createContext()
@@ -152,20 +155,24 @@ const AppProvider = ({children}) => {
         clearAlert()
     }
     const getUsers = async () =>{
-        const {searchGender, searchAge, searchLocation} = state
+        const {searchGender, searchAge, searchLocation, page} = state
         dispatch({type: GET_USERS_BEGIN})
         try {
-            console.log(searchGender)
-            const {data} = await authFetch.get(`?gender=${searchGender}&age=${searchAge}&location=${searchLocation}`)
+            const {data} = await authFetch.get(`?gender=${searchGender}&age=${searchAge}&location=${searchLocation}&page=${page}`)
             const users = data.users
+            const totalUsers = data.totalUsers
+            const pages = data.pages
             // console.log(users)
-            dispatch({type: GET_USERS_SUCCESS, payload:{users}})
+            dispatch({type: GET_USERS_SUCCESS, payload:{users,totalUsers,pages}})
         } catch (error) {
             console.log(error)
         }
     }
     const handleChange = ({name, value}) =>{
         dispatch({type: HANDLE_CHANGE, payload:{name, value}})
+    }
+    const changePage = (pageNum) =>{
+        dispatch({type:CHANGE_PAGE,payload:{page: pageNum}})
     }
 
     return <AppContext.Provider 
@@ -179,7 +186,8 @@ const AppProvider = ({children}) => {
                  deleteUser, 
                  updateUser,
                  getUsers,
-                 handleChange,                  
+                 handleChange,
+                 changePage                  
                 }
             }>
         {children}

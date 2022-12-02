@@ -23,3 +23,5 @@ export const GET_USERS_BEGIN = "GET_USERS_BEGIN"
 export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS"
 
 export const HANDLE_CHANGE = "HANDLE_CHANGE"
+
+export const CHANGE_PAGE = "CHANGE_PAGE"

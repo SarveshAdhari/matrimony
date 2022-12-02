@@ -48,7 +48,7 @@
 .user-img{
     text-align: center;
     height: 170px;
-    width: 100%;
+    width: 272px;
     box-sizing: border-box;
     margin-bottom: 5px;
     border-radius: 5px 5px 0px 0px;
@@ -76,7 +76,11 @@
         justify-content: flex-start;
     }
     .user-frame{
-        width: 274px;
+        width: 272px;
+    }
+    .user-img{
+        height: 170px;
+        width: 100%;
     }
 }
 
@@ -94,9 +98,12 @@
         
     }
     .user-frame{
-        width: 250px;
+        width: 272px;
     }
     .user-details p{
         font-size: 16px;
+    }
+    .user-img{
+        width: 250px;
     }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FormSelect, FormField } from '../../components'
 import { useAppContext } from '../../context/appContext'
+import {Pagination} from '../../components'
 import '../../assets/css/main.css'
 
 const MainPage = () => {
@@ -14,6 +15,8 @@ const MainPage = () => {
     searchGender,
     searchAge,
     searchLocation,
+    pages,
+    page
   } = useAppContext()
   const [gender, setGender] = useState()
   const [age, setAge] = useState()
@@ -27,7 +30,6 @@ const MainPage = () => {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age_now--
     }
-    console.log(age_now)
     return age_now
   }
 
@@ -40,7 +42,7 @@ const MainPage = () => {
 
   useEffect(() => {
     getUsers()
-  },[searchGender,searchAge,searchLocation])
+  },[searchGender,searchAge,searchLocation,page])
   // {users && console.log(users)}
   return (
     <div className='main-container'>
@@ -70,7 +72,7 @@ const MainPage = () => {
           // Do not return current user
           if(user.email === currUser.email || currUser.name === 'admin') return
           if(searchAge !== 'all'){
-            if(searchAge !== calculate_age(currUser.dob)) return
+            if(calculate_age(currUser.dob) !== parseInt(searchAge)) return
           }
           return (
             <div className='user-frame' key={currUser._id}>
@@ -88,6 +90,7 @@ const MainPage = () => {
           )
         })}
       </div>
+      {pages > 1 && <Pagination />}
     </div>
   )
 }

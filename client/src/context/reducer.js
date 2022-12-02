@@ -16,6 +16,7 @@ import {
     GET_USERS_BEGIN,
     GET_USERS_SUCCESS,
     HANDLE_CHANGE,
+    CHANGE_PAGE,
 } from "./actions"
 
 const reducer = (state, action) => {
@@ -154,6 +155,8 @@ const reducer = (state, action) => {
             ...state,
             isLoading: false,
             users: action.payload.users,
+            totalUsers: action.payload.totalUsers,
+            pages: action.payload.pages,
         }
     }
     if(action.type === HANDLE_CHANGE){
@@ -162,7 +165,12 @@ const reducer = (state, action) => {
             [action.payload.name]:action.payload.value, 
         }
     }
-
+    if(action.type === CHANGE_PAGE){
+        return{
+            ...state,
+            page : action.payload.page,
+        }
+    }
     throw new Error(`No such action: ${action.type}`)
 }
 

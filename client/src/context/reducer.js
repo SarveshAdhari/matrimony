@@ -162,7 +162,8 @@ const reducer = (state, action) => {
     if(action.type === HANDLE_CHANGE){
         return{
             ...state,
-            [action.payload.name]:action.payload.value, 
+            [action.payload.name]:action.payload.value,
+            page: 1, 
         }
     }
     if(action.type === CHANGE_PAGE){

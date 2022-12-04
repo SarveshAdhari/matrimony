@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAppContext } from '../../context/appContext'
-import { Alert, FormField, FormSelect, ProfilePicture } from '../../components'
+import { Alert, FormField, FormSelect } from '../../components'
 import '../../assets/css/profile.css'
 
 const Profile = () => {

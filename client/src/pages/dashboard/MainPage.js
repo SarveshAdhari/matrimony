@@ -37,6 +37,9 @@ const MainPage = () => {
     e.preventDefault()
     let name = e.target.name
     let value = e.target.value
+    // if(value == ''){
+    //   value = 'anywhere'
+    // }
     handleChange({name, value})
   }
 
@@ -68,12 +71,13 @@ const MainPage = () => {
       </form>
       <div className="users-container">
         {!users && <p>Loading...</p>}
+        {users == 0 && <p>Could not find what you were looking for!</p>}
         {users && users.map((currUser) => {
           // Do not return current user
           if(user.email === currUser.email || currUser.name === 'admin') return
-          if(searchAge !== 'all'){
-            if(calculate_age(currUser.dob) !== parseInt(searchAge)) return
-          }
+          // if(searchAge !== 'all'){
+          //   if(calculate_age(currUser.dob) !== parseInt(searchAge)) return
+          // }
           return (
             <div className='user-frame' key={currUser._id}>
               <div className='user-img'><img src={currUser.dp} alt={currUser.dp} /></div>

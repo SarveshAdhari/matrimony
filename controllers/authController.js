@@ -80,6 +80,16 @@ const update = async (req, res) => {
 }
 
 const getAllUsers = async (req, res) => {
+    const calculate_dob = (age) => {
+        let today = new Date()
+        let date = today.getDate()
+        let month = today.getMonth()
+        if(date < 10) date = "0"+date 
+        if(month < 10) month = "0"+month 
+        let calcDob = (today.getFullYear() - age)+"-"+month+"-"+date+"T00:00:00Z"
+        return calcDob
+      }
+
     try {
         const {gender, age, location} = req.query
         const queryObject = {}
@@ -88,21 +98,38 @@ const getAllUsers = async (req, res) => {
             queryObject.gender = gender
         }
         if(age && age != "all"){
-            queryObject.age = age
+            queryObject.age = calculate_dob(age)
+            console.log(queryObject.age)
         }
         if(location && location != "anywhere"){
             queryObject.location = {$regex: location, $options: 'i'}
         }
-        let result = User.find(queryObject)
+        var result = User.find(queryObject)
+        if(queryObject.age != "all"){
+            var result = User.find({
+                ...queryObject,
+                dob:{
+                    "$lt": `${queryObject.age}`
+                },
+            })
+        }
 
         const page = Number(req.query.page) || 1
-        const limit = Number(req.query.limit) || 10
+        const limit = Number(req.query.limit) || 9
         const skip = (page-1)*limit
         result = result.skip(skip).limit(limit)
 
         const users = await result
 
-        const totalUsers = await User.countDocuments(queryObject)
+        let totalUsers = await User.countDocuments(queryObject)
+        if(queryObject.age != "all"){
+            totalUsers = await User.countDocuments({
+                ...queryObject,
+                dob:{
+                    "$lt": `${queryObject.age}`
+                },
+            }) 
+        }
         const pages = Math.ceil(totalUsers/ limit)
 
         res.status(StatusCodes.OK).json({users, totalUsers, pages})

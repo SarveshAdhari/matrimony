@@ -9,6 +9,9 @@ import errorHandlerMiddleware from './middleware/errorHandler.js'
 import {fileURLToPath} from 'url'
 import {dirname} from 'path'
 import path from 'path'
+import helmet from 'helmet'
+import xss from 'xss-clean'
+import mongoSanitize from 'express-mongo-sanitize'
 
 const app = express()
 dotenv.config()
@@ -23,6 +26,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.resolve(__dirname,'./client')))
 
 app.use(express.json())
+app.use(helmet())
+app.use(xss())
+app.use(mongoSanitize())
 
 app.get('/',(req, res)=>{
     res.send('Welcome')

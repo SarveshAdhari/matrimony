@@ -34,7 +34,7 @@ const Register = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     const { name, email, password, confirmPassword, isMember } = values
     if(!isMember && password !== confirmPassword){
       passwordUnmatch()

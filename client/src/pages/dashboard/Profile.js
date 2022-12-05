@@ -23,7 +23,14 @@ const Profile = () => {
   const navigate = useNavigate()
 
   const handleDelete = () => {
-    deleteUser(user.email)
+    const email = user.email
+    const conf = prompt("Please type your email to delete your account.Please note that this process is not reversible.")
+    if(conf === email){
+      deleteUser(user.email)
+    }
+    else{
+      alert("Please enter valid credentials.")
+    } 
   }
 
   const handleSubmit = (e) => {

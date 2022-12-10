@@ -35,6 +35,14 @@
     flex-direction: row;
     justify-content: flex-start;
 }
+.loading{
+    margin: auto;
+}
+.loading img{
+    height: 100px;
+    width: 100px;
+}
+
 .user-frame{  
     margin: 10px;
     width: 272px;

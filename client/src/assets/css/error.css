@@ -1,0 +1,39 @@
+.err-div{
+    background-color: #FFDDEE;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+.err-header, .err-msg{
+    margin: 5px auto 0;
+}
+.err-link{
+    margin: 0 auto;
+}
+
+.err-header h1{
+    color: #F9C5D5;
+    font-size: 300px;
+    font-weight: 700;
+    text-shadow: 3px 3px 2px rgba(0,0,0,0.25);
+}
+
+.err-msg p{
+    margin: 0;
+    color: #C06C84;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.err-link a{
+    color: #C06C84;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 200;
+}
+
+.err-link a:hover{
+    color: #35477D;
+}

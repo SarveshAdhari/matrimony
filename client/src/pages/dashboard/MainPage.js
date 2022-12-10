@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { FormSelect, FormField } from '../../components'
+import { FormSelect, FormField, Loading } from '../../components'
 import { useAppContext } from '../../context/appContext'
 import {Pagination} from '../../components'
 import '../../assets/css/main.css'
@@ -70,7 +70,7 @@ const MainPage = () => {
           handleChange={(e)=>setLoc(e.target.value)} />
       </form>
       <div className="users-container">
-        {!users && <p>Loading...</p>}
+        {!users && <Loading />}
         {users == 0 && <p>Could not find what you were looking for!</p>}
         {users && users.map((currUser) => {
           // Do not return current user

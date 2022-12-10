@@ -87,6 +87,7 @@ const getAllUsers = async (req, res) => {
         if(date < 10) date = "0"+date 
         if(month < 10) month = "0"+month 
         let calcDob = (today.getFullYear() - age)+"-"+month+"-"+date+"T00:00:00Z"
+        console.log(calcDob)
         return calcDob
       }
 

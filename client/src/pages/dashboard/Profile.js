@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAppContext } from '../../context/appContext'
-import { Alert, FormField, FormSelect } from '../../components'
+import { Alert, FormField, FormSelect, ProfilePicture } from '../../components'
 import '../../assets/css/profile.css'
 
 const Profile = () => {
 
   const { user, deleteUser, updateUser, showAlert, genderOptions } = useAppContext()
-  // const [dp, setDp] = useState()
+  const [dp, setDp] = useState()
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
   const [occupation, setOccupation] = useState(user?.occupation)
@@ -35,8 +35,8 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(dp)
-    const currentUser = { name, email, location, occupation, income, dob, gender, contact}
+    console.log(dp)
+    const currentUser = { name, email, location, occupation, income, dob, gender, contact,dp}
     console.log(currentUser)
     updateUser(currentUser)
   }
@@ -49,7 +49,7 @@ const Profile = () => {
       <div className='alert-div'>{showAlert && <Alert />}</div>
       <div className="profile-form">
         <form encType="multipart/form-data">
-          {/* <div className='dp'>
+          <div className='dp'>
             <div>
               <ProfilePicture />
             </div>
@@ -60,7 +60,7 @@ const Profile = () => {
               name="dp"
             handleChange={(e)=>setDp(e.target.value)}
             />
-          </div> */}
+          </div>
           <div>
             {/* Name */}
             <FormField

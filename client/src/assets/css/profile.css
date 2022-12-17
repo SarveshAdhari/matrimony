@@ -90,6 +90,11 @@ input::-webkit-inner-spin-button {
 .dp input,.dp label{
     padding: 0 25%;
 }
+.dp img{
+    width: 300px;
+    height: 300px;
+    border-radius: 200px;
+}
 hr{
 color: #E26868;
 border: 1px solid #E26868;
@@ -204,6 +209,11 @@ border: 1px solid #E26868;
     .dp input,.dp label{
         padding: 0;
     }
+    .dp img{
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -259,5 +269,10 @@ border: 1px solid #E26868;
     }
     .dp input,.dp label{
         padding: 0;
+    }
+    .dp img{
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
     }
 }

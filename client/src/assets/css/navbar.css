@@ -33,6 +33,7 @@ a{
 }
 .profile img{
     align-items: center;
+    border-radius: 25px;
 }
 
 .logout{

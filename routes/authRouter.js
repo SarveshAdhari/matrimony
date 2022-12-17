@@ -3,19 +3,19 @@ import { register, login, update, getAllUsers, deleteUser } from '../controllers
 import authenticateUser from '../middleware/auth.js'
 import rateLimiter from 'express-rate-limit'
 
-// import { upload } from '../middleware/fileUpload.js'
+import { upload } from '../middleware/fileUpload.js'
 
 // import multer from 'multer'
-//Image Related
-// const multerStorage = multer.diskStorage({
-//     destination:(req, file ,cb)=>{
-//         cb(null, 'uploads')
-//     },
-//     filename:(req, file, cb)=>{
-//         cb(null, file.originalname)
+// Image Related
+// import multer from 'multer'
+// const storage = multer.diskStorage({
+//     destination:'./client/uploads',
+//     filename: (req, file, cb) => {
+//         console.log(file)
+//         cb(null, file.filename+"-"+Date.now())
 //     }
 // })
-// const upload = multer({storage: multerStorage})
+// const upload = multer({ storage: storage }).single('dp')
 
 const router = express.Router()
 
@@ -29,6 +29,6 @@ router.route('/').get(authenticateUser,getAllUsers)
 router.route('/register').post(apiLimiter, register)
 router.route('/login').post(apiLimiter, login)
 router.route('/:email').delete(deleteUser)
-router.route('/updateUser').patch(authenticateUser,update)
+router.route('/updateUser').patch(upload, authenticateUser, update)
 
 export default router

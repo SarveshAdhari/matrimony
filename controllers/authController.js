@@ -1,6 +1,7 @@
 import User from "../models/User.js"
 import {StatusCodes} from 'http-status-codes'
 import { BadRequestError, UnAuthenticatedError } from '../errors/index.js'
+import path from 'path'
 import { request } from "express"
 
 const register = async (req, res, next) => {
@@ -53,8 +54,8 @@ const login = async (req, res) => {
 
 const update = async (req, res) => {
     // console.log('user id is',req.user.userId)
-    const { email, name, occupation, location, dob, income, contact, gender } = req.body
-    if(!email || !name || !occupation || !location || !dob || !income || !contact || !gender){
+    const { email, name, occupation, location, dob, income, contact, gender, dp } = req.body
+    if(!email || !name || !occupation || !location || !dob || !income || !contact || !gender || !dp){
         throw new BadRequestError('Please provide all values')
     }
     if(occupation === 'Not Mentioned' || location === 'Not Mentioned' || income === 'Not Mentioned' || contact === 'Not Mentioned' || gender === 'Not Mentioned'){
@@ -63,6 +64,7 @@ const update = async (req, res) => {
 
     const user = await User.findOne({_id: req.user.userId})
     // console.log('user is',user)
+    user.dp = path.basename(dp)
     user.email = email
     user.name = name
     user.occupation = occupation
@@ -71,7 +73,6 @@ const update = async (req, res) => {
     user.income = income
     user.contact = contact
     user.gender = gender
-    // user.dp = dp
 
     await user.save()
 

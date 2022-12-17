@@ -42,6 +42,7 @@ const initialState = {
     pages: 1,
     totalUsers: null,
     page: 1,
+    dp:null,
 }
 
 const AppContext = React.createContext()

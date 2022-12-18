@@ -6,9 +6,9 @@ import multer from 'multer'
 const storage = multer.diskStorage({
     destination:'./client/public/uploads',
     filename: (req, file, cb) => {
-        console.log(file)
+        // console.log(file)
         cb(null,file.originalname)
     }
 })
-const upload = multer({ storage: storage }).single('dp')
+const upload = multer({ storage: storage }).single("dp")
 export {upload}

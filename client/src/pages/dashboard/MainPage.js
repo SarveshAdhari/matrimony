@@ -80,7 +80,7 @@ const MainPage = () => {
           // }
           return (
             <div className='user-frame' key={currUser._id}>
-              <div className='user-img'><img src={currUser.dp} alt={currUser.dp} /></div>
+              <div className='user-img'><img src={currUser.dp || `http://localhost:3000/uploads/${currUser.dp}`} alt="..." /></div>
               <div className='user-details'>
             <p>Name: <span><i>{currUser.name}</i></span></p>
             <p>Age: <span><i>{calculate_age(currUser.dob)}</i></span></p>

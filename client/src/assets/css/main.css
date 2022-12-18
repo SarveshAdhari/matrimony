@@ -61,6 +61,12 @@
     margin-bottom: 5px;
     border-radius: 5px 5px 0px 0px;
 }
+.user-img img{
+    height: 170px;
+    width: 272px;
+    border-radius: 5px 5px 0px 0px;
+    box-sizing: border-box;
+}
 .user-details{
     padding: 10px;
 }

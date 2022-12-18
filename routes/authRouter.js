@@ -5,18 +5,6 @@ import rateLimiter from 'express-rate-limit'
 
 import { upload } from '../middleware/fileUpload.js'
 
-// import multer from 'multer'
-// Image Related
-// import multer from 'multer'
-// const storage = multer.diskStorage({
-//     destination:'./client/uploads',
-//     filename: (req, file, cb) => {
-//         console.log(file)
-//         cb(null, file.filename+"-"+Date.now())
-//     }
-// })
-// const upload = multer({ storage: storage }).single('dp')
-
 const router = express.Router()
 
 const apiLimiter = rateLimiter({

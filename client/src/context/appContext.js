@@ -42,7 +42,6 @@ const initialState = {
     pages: 1,
     totalUsers: null,
     page: 1,
-    dp:null,
 }
 
 const AppContext = React.createContext()
@@ -146,7 +145,7 @@ const AppProvider = ({children}) => {
     const updateUser = async (currentUser) =>{
         dispatch({type: UPDATE_USER_BEGIN})
         try {
-            const {data} = await authFetch.patch(`/updateUser`, currentUser)
+            const {data} = await authFetch.patch(`/updateUser`,currentUser)
             const {user,token} = data
             dispatch({type: UPDATE_USER_SUCCESS, payload:{user,token}})
             addUserToLocalStorage({user,token})

@@ -35,9 +35,18 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(dp)
-    const currentUser = { name, email, location, occupation, income, dob, gender, contact,dp}
-    console.log(currentUser)
+    // const info = { name, email, location, occupation, income, dob, gender, contact,dp}
+    const currentUser = new FormData()
+    currentUser.append('dp',dp[0])
+    currentUser.append('name',name)
+    currentUser.append('email',email)
+    currentUser.append('location',location)
+    currentUser.append('occupation',occupation)
+    currentUser.append('income',income)
+    currentUser.append('dob',dob)
+    currentUser.append('gender',gender)
+    currentUser.append('contact',contact)
+    currentUser.append('fileName',dp[0].name)
     updateUser(currentUser)
   }
 
@@ -56,9 +65,8 @@ const Profile = () => {
             <FormField
               label
               type="file"
-              value={"Display Picture"}
               name="dp"
-            handleChange={(e)=>setDp(e.target.value)}
+            handleChange={(e)=>setDp(e.target.files)}
             />
           </div>
           <div>

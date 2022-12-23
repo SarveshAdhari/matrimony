@@ -115,8 +115,11 @@ const getAllUsers = async (req, res) => {
                 ...queryObject,
                 dob: {
                     "$lt": `${queryObject.age}`
-                },
-            })
+                }, 
+                _id:{
+                    "$ne": req.user.userId
+                },   
+            }).sort({dob: -1})
         }
 
         const page = Number(req.query.page) || 1

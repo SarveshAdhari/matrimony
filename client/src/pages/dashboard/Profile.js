@@ -35,9 +35,17 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // const info = { name, email, location, occupation, income, dob, gender, contact,dp}
     const currentUser = new FormData()
-    currentUser.append('dp',dp[0])
+    // console.log(dp[0]);
+    if(dp[0] && dp[0].size <= 250000){
+      currentUser.append('dp',dp[0])
+    }
+    else{
+      alert("Please upload an image less than 250kb")
+      return
+    }
+    // const info = { name, email, location, occupation, income, dob, gender, contact,dp}
+    // currentUser.append('dp',dp[0])
     currentUser.append('name',name)
     currentUser.append('email',email)
     currentUser.append('location',location)
@@ -149,14 +157,6 @@ const Profile = () => {
               options={genderOptions}
               handleChange={(e) => setGender(e.target.value)} />
           </div>
-          {/* <div className='dp'> */}
-          {/* Display Picture */}
-          {/* <FormField
-        label
-          type="file"
-          name="dp"
-          handleChange={(e)=>setDp(e.target.value)} />
-        </div>*/}
         </form>
         <hr />
         <div className='btn-container'>
